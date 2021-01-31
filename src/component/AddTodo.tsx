@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { Task } from "../domain/Task";
 
 export function AddTodo(props: Props) {
 
   const [inputValue, setValue] = useState('');
 
   const addNewTodo = () => {
-    props.addTodo(inputValue);
+    const newTask = new Task(inputValue);
+    props.addTodo(newTask);
     setValue('');
   }
 
@@ -16,5 +18,5 @@ export function AddTodo(props: Props) {
 };
 
 type Props = {
-  addTodo: (todo: string) => void
+  addTodo: (task: Task) => void
 }

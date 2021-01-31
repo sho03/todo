@@ -1,14 +1,15 @@
 import React from "react";
+import { Task } from "../domain/Task";
 
 export function TodoList(props: Props) {
 
   return <div>
     <ul>
-      {props.names.map(name => <li>{name}</li>)}
+      {props.tasks.map(task=> <li>{task.title}</li>)}
     </ul>
   </div>
 }
 
 type Props = {
-  names: string[]
+  tasks: Task[]
 }
