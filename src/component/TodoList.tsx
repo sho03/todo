@@ -3,10 +3,18 @@ import { Task } from "../domain/Task";
 
 export function TodoList(props: Props) {
 
+  const todoList = () => {
+    return props.tasks.map(task => {
+      return(
+      <div key={task.title}>
+        <span>{task.title}</span>
+        <input type="checkbox" defaultChecked={task.done}/>
+      </div>
+      )
+    })
+  };
   return <div>
-    <ul>
-      {props.tasks.map(task=> <li key={task.title}>{task.title}</li>)}
-    </ul>
+    {todoList()}
   </div>
 }
 
