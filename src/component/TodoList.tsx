@@ -5,7 +5,7 @@ export function TodoList(props: Props) {
 
   return <div>
     <ul>
-      {props.tasks.map(task=> <li>{task.title}</li>)}
+      {props.tasks.map(task=> <li key={task.title}>{task.title}</li>)}
     </ul>
   </div>
 }
