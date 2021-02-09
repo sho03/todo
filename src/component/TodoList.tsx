@@ -1,14 +1,20 @@
-import React, { ChangeEvent } from "react";
-import { Task } from "../domain/Task";
+import React, {ChangeEvent} from "react";
+import {Task} from "../domain/Task";
+import {useSelector} from "react-redux";
+import {AppState, TodoState} from "../redux/store";
 
 export function TodoList(props: Props) {
 
   const onChange = (event: ChangeEvent<HTMLInputElement>, task: Task) => {
     props.doComplete(event, task);
   }
-
+  const tasks = useSelector((state: AppState) => state.todo.tasks)
+  console.log(tasks)
+  if (!tasks) {
+    return <div>no contents</div>
+  }
   const todoList = () => {
-    return props.tasks.map(task => {
+    return tasks.map(task => {
       return(
       <div key={task.title}>
         <span>{task.title}</span>
@@ -17,6 +23,7 @@ export function TodoList(props: Props) {
       )
     })
   };
+
   return <div>
     {todoList()}
   </div>
